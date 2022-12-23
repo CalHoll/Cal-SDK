@@ -1,6 +1,6 @@
 import { RequestOptionsType } from '../types/types';
 
-export function buildOptions<T>(reqOpt?: RequestOptionsType<T>): string {
+export function buildOptions<T>(reqOpt?: RequestOptionsType): string {
   if (!reqOpt) return '';
   const limit = reqOpt.limit;
   const page = reqOpt.page;

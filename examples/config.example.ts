@@ -2,4 +2,4 @@
  * UNCOMMENT THIS FILE AND FILL IN YOUR API KEY BELOW
  */
 
-// const API_KEY = '[PUT_API_KEY_HERE]';
+// export const API_KEY = '[PUT_API_KEY_HERE]';
