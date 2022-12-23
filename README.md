@@ -15,7 +15,7 @@ To use the SDK you need an API key, sign up for one here: [https://the-one-api.d
 ## Installation
 
 ```
-npm i @calholl/cal-sdk
+npm i cal-sdk
 ```
 
 ## Testing
@@ -29,6 +29,8 @@ npm run test
 Current SDK queries do not make filtering results available.
 
 Currently only the Books endpoint for 'getAll' has test coverage.
+
+NPM package can be reduced in size.
 
 ## Examples
 
