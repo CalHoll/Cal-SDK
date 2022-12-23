@@ -1,6 +1,4 @@
 import { AxiosInstance } from 'axios';
-import { Character } from './character';
-import { Movie } from './movie';
 import { QuoteType, RequestOptionsType, ResponseType } from '../types/types';
 import { buildOptions } from '../util/options_builder';
 
@@ -31,38 +29,6 @@ export class Quote {
   async getAll(options?: RequestOptionsType): Promise<ResponseType<QuoteType>> {
     return this.client
       .get(`${Quote.urlRoute}${buildOptions(options)}`)
-      .then((response) => response?.data);
-  }
-
-  /**
-   * Request quotes by character id
-   *
-   * @param 'characterId' {string}
-   * @param 'options' {RequestOptionsType}
-   * @result {ResponseType<QuoteType>}
-   */
-  async getQuotesByCharacter(
-    characterId: string,
-    options?: RequestOptionsType
-  ): Promise<ResponseType<QuoteType>> {
-    return this.client
-      .get(`${Character.urlRoute}/${characterId}/${Quote.urlRoute}${buildOptions(options)}`)
-      .then((response) => response?.data);
-  }
-
-  /**
-   * Request quotes by movie id
-   *
-   * @param 'movieId' {string}
-   * @param 'options' {RequestOptionsType}
-   * @result {ResponseType<QuoteType>}
-   */
-  async getQuotesByMovie(
-    movieId: string,
-    options?: RequestOptionsType
-  ): Promise<ResponseType<QuoteType>> {
-    return this.client
-      .get(`${Movie.urlRoute}/${movieId}/${Quote.urlRoute}${buildOptions(options)}`)
       .then((response) => response?.data);
   }
 }
