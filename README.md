@@ -28,6 +28,8 @@ npm run test
 
 Current SDK queries do not make filtering results available.
 
+Currently only the Books endpoint for 'getAll' has test coverage.
+
 ## Examples
 
 To try the SDK, the `./examples` directory has a set of SDK functions ready to showcase.

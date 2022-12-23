@@ -1,11 +1,10 @@
 import { AxiosInstance } from 'axios';
 import { CharacterType, ResponseType, RequestOptionsType, QuoteType } from '../types/types';
 import { buildOptions } from '../util/options_builder';
-import { Quote } from './quote';
+import { CharactersRoute, QuotesRoute } from '../constants/constants';
 
 export class Character {
   private readonly client: AxiosInstance;
-  static readonly urlRoute = '/character';
 
   public constructor(client: AxiosInstance) {
     this.client = client;
@@ -18,9 +17,7 @@ export class Character {
    * @result {CharacterType}
    */
   async get(id: string): Promise<CharacterType> {
-    return this.client
-      .get(`${Character.urlRoute}/${id}`)
-      .then((response) => response?.data.docs[0]);
+    return this.client.get(`${CharactersRoute}/${id}`).then((response) => response?.data.docs[0]);
   }
 
   /**
@@ -31,7 +28,7 @@ export class Character {
    */
   async getAll(options?: RequestOptionsType): Promise<ResponseType<CharacterType>> {
     return this.client
-      .get(`${Character.urlRoute}${buildOptions(options)}`)
+      .get(`${CharactersRoute}${buildOptions(options)}`)
       .then((response) => response?.data);
   }
 
@@ -47,7 +44,7 @@ export class Character {
     options?: RequestOptionsType
   ): Promise<ResponseType<QuoteType>> {
     return this.client
-      .get(`${Character.urlRoute}/${characterId}${Quote.urlRoute}${buildOptions(options)}`)
+      .get(`${CharactersRoute}/${characterId}${QuotesRoute}${buildOptions(options)}`)
       .then((response) => response?.data);
   }
 }

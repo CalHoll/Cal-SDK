@@ -1,10 +1,10 @@
 import { AxiosInstance } from 'axios';
 import { QuoteType, RequestOptionsType, ResponseType } from '../types/types';
 import { buildOptions } from '../util/options_builder';
+import { QuotesRoute } from '../constants/constants';
 
 export class Quote {
   private readonly client: AxiosInstance;
-  static readonly urlRoute = '/quote';
 
   public constructor(client: AxiosInstance) {
     this.client = client;
@@ -17,7 +17,7 @@ export class Quote {
    * @result {QuoteType}
    */
   async get(id: string): Promise<QuoteType> {
-    return this.client.get(`${Quote.urlRoute}/${id}`).then((response) => response?.data.docs[0]);
+    return this.client.get(`${QuotesRoute}/${id}`).then((response) => response?.data.docs[0]);
   }
 
   /**
@@ -28,7 +28,7 @@ export class Quote {
    */
   async getAll(options?: RequestOptionsType): Promise<ResponseType<QuoteType>> {
     return this.client
-      .get(`${Quote.urlRoute}${buildOptions(options)}`)
+      .get(`${QuotesRoute}${buildOptions(options)}`)
       .then((response) => response?.data);
   }
 }

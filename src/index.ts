@@ -5,8 +5,7 @@ import { Movie } from './services/movie';
 import { Character } from './services/character';
 import { Quote } from './services/quote';
 import { Chapter } from './services/chapter';
-
-const API_URL: string = 'https://the-one-api.dev/v2';
+import { API_URL } from './constants/constants';
 
 /**
  * LOTR API TypeScript Client

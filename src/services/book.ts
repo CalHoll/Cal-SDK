@@ -1,10 +1,10 @@
 import { AxiosInstance, AxiosResponse } from 'axios';
 import { BookType, RequestOptionsType, ResponseType } from '../types/types';
 import { buildOptions } from '../util/options_builder';
+import { BooksRoute } from '../constants/constants';
 
 export class Book {
   private readonly client: AxiosInstance;
-  static readonly urlRoute = '/book';
 
   public constructor(client: AxiosInstance) {
     this.client = client;
@@ -18,7 +18,7 @@ export class Book {
    */
   async get(id: string): Promise<BookType> {
     return this.client
-      .get(`${Book.urlRoute}/${id}`)
+      .get(`${BooksRoute}/${id}`)
       .then((response: AxiosResponse<ResponseType<BookType>>) => response.data.docs[0]);
   }
 
@@ -30,7 +30,7 @@ export class Book {
    */
   async getAll(options?: RequestOptionsType): Promise<ResponseType<BookType>> {
     return this.client
-      .get(`${Book.urlRoute}${buildOptions<BookType>(options)}`)
+      .get(`${BooksRoute}${buildOptions(options)}`)
       .then((response: AxiosResponse<ResponseType<BookType>>) => response.data);
   }
 }
